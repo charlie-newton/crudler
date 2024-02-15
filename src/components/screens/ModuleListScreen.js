@@ -14,11 +14,16 @@ const ModuleListScreen = ({ navigation }) => {
     const [modules, setModules] = useState(initialModules);
     // Handlers -------------------------
     const handleAdd = (module) => setModules([...modules, module]);
+    const handleModify = (updatedModule) => setModules(modules.map((module) => (module.ModuleID === updatedModule.ModuleID ? updatedModule : module)));
     const handleDelete = (module) => setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
 
     const onAdd = (module) => {
         handleAdd(module);
         navigation.goBack();
+    };
+    const onModify = (module) => {
+        handleModify(module);
+        navigation.navigate("ModuleListScreen");
     };
     const onDelete = (module) => {
         handleDelete(module);
@@ -26,7 +31,8 @@ const ModuleListScreen = ({ navigation }) => {
     };
 
     const goToAddScreen = () => navigation.navigate("ModuleAddScreen", { onAdd });
-    const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", { module, onDelete });
+    const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", { module, onDelete, onModify });
+
     // View -----------------------------
 
     return (
