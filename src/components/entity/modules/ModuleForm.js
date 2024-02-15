@@ -10,13 +10,13 @@ const defaultModule = {
     ModuleLevel: null,
     ModuleLeaderID: null,
     ModuleLeaderName: null,
-    ModuleImage: null,
+    ModuleImageURL: null,
 };
 
 const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
     // Initialisation -------------------
     defaultModule.ModuleID = Math.floor(100000 + Math.random() * 900000);
-    defaultModule.ModuleImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/800px-SMPTE_Color_Bars.svg.png";
+    defaultModule.ModuleImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/800px-SMPTE_Color_Bars.svg.png";
 
     const levels = [
         { value: 3, label: "3 (Foundation)" },
@@ -43,7 +43,7 @@ const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
             <Form.InputText label="Module Name" value={module.ModuleName} onChange={(value) => handleChange("ModuleName", value)} />
             <Form.InputSelect label="Module Level" value={module.ModuleLevel} onChange={(value) => handleChange("ModuleLevel", value)} prompt="Select module level..." options={levels} />
             <Form.InputText label="Module Leader" value={module.ModuleLeaderName} onChange={(value) => handleChange("ModuleLeaderName", value)} />
-            <Form.InputText label="Module Image" value={module.ModuleImage} onChange={(value) => handleChange("ModuleImage", value)} />
+            <Form.InputText label="Module Image" value={module.ModuleImageURL} onChange={(value) => handleChange("ModuleImageURL", value)} />
         </Form>
     );
 };
