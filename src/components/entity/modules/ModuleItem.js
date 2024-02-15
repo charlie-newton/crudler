@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const ModuleItem = ({ module, onSelect }) => {
     // Initialisation -------------------
@@ -6,7 +6,7 @@ const ModuleItem = ({ module, onSelect }) => {
     // Handlers -------------------------
     // View -----------------------------
     return (
-        <Pressable onPress={onSelect}>
+        <Pressable onPress={() => onSelect(module)}>
             <View style={styles.item}>
                 <Text style={styles.text}>
                     {module.ModuleCode} {module.ModuleName}
