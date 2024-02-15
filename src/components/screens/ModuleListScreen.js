@@ -2,13 +2,13 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import Screen from "../layout/screen";
 import ModuleList from "../entity/modules/ModuleList.js";
-import RenderCount from "../UI/RenderCount.js";
 
 import initialModules from "../../data/modules.js";
 
-const ModuleListScreen = () => {
+const ModuleListScreen = ({ navigation }) => {
     // Initialisation -------------------
     // State ----------------------------
+    const handleSelect = (module) => navigation.navigate("ModuleViewScreen", { module });
     const [modules, setModules] = useState(initialModules);
     // Handlers -------------------------
     const handleDelete = (module) => setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
@@ -16,8 +16,7 @@ const ModuleListScreen = () => {
 
     return (
         <Screen>
-            <RenderCount />
-            <ModuleList modules={modules} onSelect={handleDelete} />
+            <ModuleList modules={modules} onSelect={handleSelect} />
         </Screen>
     );
 };
